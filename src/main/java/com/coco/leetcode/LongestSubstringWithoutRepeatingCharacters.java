@@ -5,20 +5,20 @@ import java.util.Map;
 
 /**
  * Given a string, find the length of the longest substring without repeating characters.
- * 
+ * <p>
  * Examples:
- * 
+ * <p>
  * Given "abcabcbb", the answer is "abc", which the length is 3.
- * 
+ * <p>
  * Given "bbbbb", the answer is "b", with the length of 1.
- * 
+ * <p>
  * Given "pwwkew", the answer is "wke", with the length of 3. Note that the answer must be a
  * substring, "pwke" is a subsequence and not a substring.
- * 
- * @see https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description
  *
+ * @see <href>https://leetcode.com/problems/longest-substring-without-repeating-characters/#/description<href/>
  */
 public class LongestSubstringWithoutRepeatingCharacters {
+
 
     public static int lengthOfLongestSubstring(String str) {
         if (str == null || str.length() == 0) {
@@ -29,7 +29,10 @@ public class LongestSubstringWithoutRepeatingCharacters {
         for (int index = 0, unUniqueIndex = 0; index < str.length(); index++) {
             char currentChar = str.charAt(index);
             if (map.containsKey(currentChar)) {
-                unUniqueIndex = Math.max(map.get(currentChar) + 1, unUniqueIndex);
+                // 对unUniqueIndex的判断是关键!
+                if (map.get(currentChar) + 1 > unUniqueIndex) {
+                    unUniqueIndex = map.get(currentChar) + 1;
+                }
             }
             map.put(currentChar, index);
             max = Math.max(max, index - unUniqueIndex + 1);
@@ -39,7 +42,7 @@ public class LongestSubstringWithoutRepeatingCharacters {
 
     /**
      * 错误的示范!
-     * 
+     *
      * @param str
      * @return
      */

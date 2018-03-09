@@ -3,8 +3,6 @@ package com.coco.leetcode.test;
 import java.util.Calendar;
 import java.util.Date;
 
-import junit.framework.Assert;
-
 public class Test {
 
     public static void main(String[] args) {
@@ -51,13 +49,6 @@ public class Test {
 
         System.out.println(str1 == str2);
         System.out.println(str1 == str3);
-    }
-
-    @org.junit.Test
-    void testEqual() {
-        Integer num3 = -124;
-        Integer num4 = -124;
-        Assert.assertEquals(num3, num4);
     }
 
 }
